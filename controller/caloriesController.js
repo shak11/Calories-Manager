@@ -59,5 +59,14 @@ const getReport = async (req, res) => {
     }
 };
 
+// Clean old calories
+const cleanOldCalories = async () => {
+    const oldCalories = await CaloriesConsumption.find({});
+    oldCalories.forEach((oldCalorieConsumption) => {
+        const calorieID = oldCalorieConsumption.toString().split("\'")[1];
+        CaloriesConsumption.findByIdAndDelete(mongoose.Types.ObjectId.createFromHexString(calorieID), {});
+    })
+}
+
 // Export the functions
-export { addCalories, getReport };
+export { addCalories, getReport, cleanOldCalories };

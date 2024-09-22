@@ -1,0 +1,16 @@
+{
+  "name": "calories-managment",
+  "version": "1.0.0",
+  "description": "Calories Management - connection to mongodb with express",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.21.0",
+    "mongoose": "^8.6.3"
+  }
+}

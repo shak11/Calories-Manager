@@ -1,7 +1,7 @@
 // Shaked Benno 207058132
 // Itay Gershy 123456789
 
-export const getStudents = (req, res) => {
+const getStudents = (req, res) => {
     // Array of objects describing developers
     const developers = [
         { "firstname": "Shaked", "lastname": "Benno", "id": 207058132, "email": "shakedbeno@yahoo.com" },
@@ -9,3 +9,5 @@ export const getStudents = (req, res) => {
     ];
     res.json(developers);
 };
+
+export {getStudents};

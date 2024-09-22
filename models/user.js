@@ -29,6 +29,5 @@ const userSchema = new mongoose.Schema(
 
 // Create and export the User model based on the defined schema
 const user = mongoose.model('User', userSchema);
-
 // Exporting the user model
 export default user;
