@@ -4,6 +4,7 @@
 //Import Mongo , GET and POST for Calories
 import mongoose from 'mongoose';
 import { CaloriesConsumption } from "../models/caloriesConsumption.js";
+import User from "../models/user.js";
 
 // Add new calorie consumption item
 const addCalories = async (req, res) => {
@@ -61,11 +62,16 @@ const getReport = async (req, res) => {
 
 // Clean old calories
 const cleanOldCalories = async () => {
-    const oldCalories = await CaloriesConsumption.find({});
-    oldCalories.forEach((oldCalorieConsumption) => {
-        const calorieID = oldCalorieConsumption.toString().split("\'")[1];
-        CaloriesConsumption.findByIdAndDelete(mongoose.Types.ObjectId.createFromHexString(calorieID), {});
-    })
+    const caloriesID = [];
+    await CaloriesConsumption.find({}).
+    then(calories =>
+        calories.forEach((oldCalorie) => {
+            const calorieID = oldCalorie.toString().split("\'")[1];
+            caloriesID.push(calorieID);
+        }));
+    for (let id of caloriesID) {
+        await CaloriesConsumption.findByIdAndDelete(mongoose.Types.ObjectId.createFromHexString(id), {});
+    }
 }
 
 // Export the functions
