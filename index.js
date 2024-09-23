@@ -1,13 +1,14 @@
+// Itay Gershi 212303028
 // Shaked Benno 207058132
-// Itay Gershy 123456789
 
 //Importing express.Mongo and the REST API
 import express  from "express";
 import mongoose  from "mongoose";
 
-import CaloriesConsumption from './routes/caloriesConsumption.js';
+import About from './routes/about.js';
 import Users from './routes/users.js';
-import About from './routes/about.js'
+import CaloriesConsumption from './routes/caloriesConsumption.js';
+
 import {addUserOnce} from "./controller/userController.js";
 import {cleanOldCalories} from "./controller/caloriesController.js";
 
@@ -15,9 +16,7 @@ import {cleanOldCalories} from "./controller/caloriesController.js";
 //Basic Setters
 const app = express();
 const PORT = 8080;
-// const MongoDBURL = "mongodb+srv://<username>:<password>@beyondthebasics.abcde.mongodb.net/test"
-const MongoDBURL = "mongodb://localhost:27017/Boomer"
-console.log(MongoDBURL)
+const MongoDBURL = "mongodb+srv://HIT:1234@caloriesmanager.sjxpw.mongodb.net/Calories"
 // Parse JSON request bodies
 app.use(express.json());
 

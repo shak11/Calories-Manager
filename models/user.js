@@ -1,5 +1,5 @@
 // Shaked Benno 207058132
-// Itay Gershy 123456789
+// Itay Gershi 212303028
 
 import mongoose from 'mongoose';
 
@@ -22,12 +22,13 @@ const userSchema = new mongoose.Schema(
         birthday: {
             type: mongoose.Schema.Types.String,
             required: true,
-        },
+        }
     },
     { collection: 'users' }
 );
 
 // Create and export the User model based on the defined schema
 const user = mongoose.model('User', userSchema);
+
 // Exporting the user model
 export default user;

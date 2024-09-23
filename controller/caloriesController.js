@@ -1,5 +1,5 @@
 // Shaked Benno 207058132
-// Itay Gershy 123456789
+// Itay Gershi 212303028
 
 //Import Mongo , GET and POST for Calories
 import mongoose from 'mongoose';
@@ -20,7 +20,7 @@ const addCalories = async (req, res) => {
             id: customId, // Assign of the custom ID
             description,
             category,
-            amount,
+            amount
         });
         await newCalorie.save();
         res.status(201).json(newCalorie);
@@ -64,7 +64,7 @@ const getReport = async (req, res) => {
 // Clean old calories
 const cleanOldCalories = async () => {
     const caloriesID = [];
-    await CaloriesConsumption.find({}).
+    await CaloriesConsumption.find({},{}, {}).
     then(calories =>
         calories.forEach((oldCalorie) => {
             const calorieID = oldCalorie.toString().split("\'")[1];

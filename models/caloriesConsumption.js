@@ -1,5 +1,5 @@
 // Shaked Benno 207058132
-// Itay Gershy 123456789
+// Itay Gershi 212303028
 
 import mongoose from 'mongoose';
 
@@ -46,7 +46,7 @@ const caloriesConsumptionSchema = new mongoose.Schema(
         amount: {
             type: mongoose.Schema.Types.Number,
             required: true,
-        },
+        }
     },
     { collection: 'calories' }
 );
