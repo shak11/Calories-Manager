@@ -4,7 +4,7 @@
 //Import Mongo , GET and POST for Calories
 import mongoose from 'mongoose';
 import { CaloriesConsumption } from "../models/caloriesConsumption.js";
-import User from "../models/user.js";
+
 
 // Add new calorie consumption item
 const addCalories = async (req, res) => {
@@ -42,16 +42,17 @@ const getReport = async (req, res) => {
             other: [],
         };
 
-        const calories = await CaloriesConsumption.find({ user_id, year, month },{},{});
-        // Creating an Array for the Calories based on the category
-        calories.forEach((CalorieConsumption) => {
-            report[CalorieConsumption.category].push({
-                day: CalorieConsumption.day,
-                description: CalorieConsumption.description,
-                amount: CalorieConsumption.amount,
-            });
-        });
-
+        // Creating the report for the Calories based on the category
+        await CaloriesConsumption.find({user_id, year, month },{},{}).
+        then(calories =>
+            calories.forEach((oldCalorie) => {
+                report[oldCalorie.category].push({
+                    day: oldCalorie.day,
+                    description: oldCalorie.description,
+                    amount: oldCalorie.amount,
+                });
+            }));
+        // Return the json
         res.json(report);
     } catch (err) {
         //Catching if there is any error
